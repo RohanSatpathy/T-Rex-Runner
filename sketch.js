@@ -89,7 +89,6 @@ function draw() {
   fill("black")
   text("Score: "+ score,30,50);
   
-  
   if (gameState===PLAY){
     score = score + Math.round(getFrameRate()/60);
     ground.velocityX = -(6 + 3*score/100);
@@ -127,7 +126,9 @@ function draw() {
     
     //change the trex animation
     trex.changeAnimation("collided",trex_collided);
-    
+    if(mousePressedOver(restart)) {
+        reset();
+      }
     //set lifetime of the game objects so that they are never destroyed
     obstaclesGroup.setLifetimeEach(-1);
     cloudsGroup.setLifetimeEach(-1);
